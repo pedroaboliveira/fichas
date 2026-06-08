@@ -1,0 +1,331 @@
+openapi: 3.0.3
+info:
+  title: API de Exemplo da Ficha 3
+  description: Definição exemplificativa de uma API em OpenAPI 3 para a ficha 3 da UC de Programação III do curso de Multimédia do ISMT.
+  version: 1.0.0
+  contact:
+    email: geral@ismt.pt
+
+servers:
+  - url: http://localhost:5000/api/v1
+    description: Servidor local
+
+tags:
+  - name: student
+    description: Dados referentes aos alunos do curso
+  - name: teacher
+    description: Dados referentes os professores das disciplinas
+  - name: subject
+    description: Dados referentes às disciplinas do curso
+
+paths:
+  
+  /students:
+    get:
+      tags:
+        - student
+      summary: Obtém todos os alunos
+      responses:
+        '200':
+          description: Lista de alunos obtida com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+        '500':
+          description: Erro interno do servidor
+    post:
+      tags:
+        - student
+      summary: Cria um novo aluno
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '201':
+          description: Aluno criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '400':
+          description: Dados inválidos fornecidos
+
+  /students/{id}:
+    put:
+      tags:
+        - student
+      summary: Atualiza um aluno existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do aluno a atualizar
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '200':
+          description: Aluno atualizado com sucesso
+        '404':
+          description: Aluno não encontrado
+    delete:
+      tags:
+        - student
+      summary: Elimina um aluno existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do aluno a eliminar
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Aluno eliminado com sucesso
+        '404':
+          description: Aluno não encontrado
+
+ 
+  /teachers:
+    get:
+      tags:
+        - teacher
+      summary: Obtém todos os professores
+      responses:
+        '200':
+          description: Lista de professores obtida com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Teacher'
+    post:
+      tags:
+        - teacher
+      summary: Cria um novo professor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+      responses:
+        '201':
+          description: Professor criado com sucesso
+
+  /teachers/{id}:
+    get:
+      tags:
+        - teacher
+      summary: Obtém os dados de um professor específico
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do professor a consultar
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Dados do professor obtidos com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+        '404':
+          description: Professor não encontrado
+    put:
+      tags:
+        - teacher
+      summary: Atualiza um professor existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+      responses:
+        '200':
+          description: Professor atualizado com sucesso
+    delete:
+      tags:
+        - teacher
+      summary: Elimina um professor existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Professor eliminado com sucesso
+
+ 
+  /subjects:
+    get:
+      tags:
+        - subject
+      summary: Obtém todas as disciplinas
+      responses:
+        '200':
+          description: Lista de disciplinas obtida com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subject'
+    post:
+      tags:
+        - subject
+      summary: Cria uma nova disciplina
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subject'
+      responses:
+        '201':
+          description: Disciplina criada com sucesso
+
+  /subjects/{id}:
+    get:
+      tags:
+        - subject
+      summary: Obtém os dados de uma disciplina específica
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Dados da disciplina obtidos com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subject'
+    put:
+      tags:
+        - subject
+      summary: Atualiza uma disciplina existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subject'
+      responses:
+        '200':
+          description: Disciplina atualizada com sucesso
+    delete:
+      tags:
+        - subject
+      summary: Elimina uma disciplina existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Disciplina eliminada com sucesso
+
+components:
+  schemas:
+    
+    Student:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Chave primária da entidade aluno
+          example: 1
+        name:
+          type: string
+          description: Nome completo do aluno
+          example: Carlos Silva
+        address:
+          type: string
+          description: Morada fiscal do aluno
+          example: Rua A
+        nif:
+          type: integer
+          description: NIF do aluno
+          example: 123456789
+        subjects:
+          type: array
+          description: Todas as disciplinas a que o aluno se encontra inscrito
+          items:
+            $ref: '#/components/schemas/Subject'
+
+   
+    Teacher:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Chave primária do professor
+          example: 1
+        name:
+          type: string
+          description: Nome do professor
+          example: Maria Sousa
+        email:
+          type: string
+          description: Endereço de email do professor
+          example: maria@ismt.pt
+        subjects:
+          type: array
+          description: Todas as disciplinas que o professor leciona
+          items:
+            $ref: '#/components/schemas/Subject'
+
+   
+    Subject:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Chave primária da disciplina
+          example: 1
+        name:
+          type: string
+          description: Nome da disciplina
+          example: Matemática
+        totalHours:
+          type: number
+          format: float
+          description: Total de horas letivas da disciplina
+          example: 25.0
+        teacher:
+          description: Professor que leciona a disciplina
+          $ref: '#/components/schemas/Teacher'
