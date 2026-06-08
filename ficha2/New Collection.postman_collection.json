@@ -1,0 +1,166 @@
+{
+  "info": {
+    "_postman_id": "d47e7853-637b-4802-9ea9-df61d16c5a46",
+    "name": "New Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49757700"
+  },
+  "item": [
+    {
+      "name": "TMDB Requests",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "popular",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/popular?api_key=8d4ed5613cad8d0db68b446dbce57d9e&language=pt-",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "popular"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "8d4ed5613cad8d0db68b446dbce57d9e"
+                },
+                {
+                  "key": "language",
+                  "value": "pt-"
+                }
+              ]
+            }
+          },
+          "_postman_previewlanguage": null,
+          "header": null,
+          "cookie": [],
+          "body": null
+        },
+        {
+          "name": "550",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/550?api_key=8d4ed5613cad8d0db68b446dbce57d9e&language=pt-PT",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "550"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "8d4ed5613cad8d0db68b446dbce57d9e"
+                },
+                {
+                  "key": "language",
+                  "value": "pt-PT"
+                }
+              ]
+            }
+          },
+          "_postman_previewlanguage": null,
+          "header": null,
+          "cookie": [],
+          "body": null
+        },
+        {
+          "name": "272",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/movie/272?api_key=8d4ed5613cad8d0db68b446dbce57d9e&language=pt-PT",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "movie",
+                "272"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "8d4ed5613cad8d0db68b446dbce57d9e"
+                },
+                {
+                  "key": "language",
+                  "value": "pt-PT"
+                }
+              ]
+            }
+          },
+          "_postman_previewlanguage": null,
+          "header": null,
+          "cookie": [],
+          "body": null
+        },
+        {
+          "name": "movie?api_key",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.themoviedb.org/3/search/movie?api_key=8d4ed5613cad8d0db68b446dbce57d9e&language=pt-PT&query=Batman",
+              "protocol": "https",
+              "host": [
+                "api",
+                "themoviedb",
+                "org"
+              ],
+              "path": [
+                "3",
+                "search",
+                "movie"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "8d4ed5613cad8d0db68b446dbce57d9e"
+                },
+                {
+                  "key": "language",
+                  "value": "pt-PT"
+                },
+                {
+                  "key": "query",
+                  "value": "Batman"
+                }
+              ]
+            }
+          },
+          "_postman_previewlanguage": null,
+          "header": null,
+          "cookie": [],
+          "body": null
+        }
+      ]
+    }
+  ]
+}
